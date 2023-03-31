@@ -15,8 +15,6 @@
 FROM maven:3 AS build
 WORKDIR /app-src
 COPY src src
-COPY .mvn .
-COPY mvnw .
 COPY pom.xml .
 RUN mvn clean package
 

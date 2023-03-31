@@ -1,7 +1,11 @@
+# Para crear todas las imágenes: docker-compose up --build
+# Para levantar varias instancias de algún servicio (ej. sumador): docker-compose up --scale sumador=3
 version: '3.5'
 services:
     # A cada contenedor se le asigna un hostname
     # igual al nombre del servicio
+    
+    # http://localhost:8761/
     eureka:
         build: ./eurekaserver
         container_name: eureka_cont
@@ -11,6 +15,7 @@ services:
         ports:
             - 8761:8761
 
+    # http://localhost:8080/calculadora/suma?a=5&b=4
     calculadora:
         build: ./calculadora
         container_name: calculadora_cont
@@ -23,9 +28,9 @@ services:
         depends_on:
             - eureka
 
+    # El puerto de sumador no hay que exponerlo,
+    # ya que la funcionalidad de sumador se accede desde el contenedor de calculadora
     sumador:
-        # El puerto de sumador no hay que exponerlo,
-        # ya que la funcionalidad de sumador se accede desde el contenedor de calculadora
 
         build: ./sumador
 
