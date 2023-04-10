@@ -1,5 +1,11 @@
-# Para crear todas las imágenes: docker-compose up --build
-# Para levantar varias instancias de algún servicio (ej. sumador): docker-compose up --scale sumador=3
+# En las últimas versiones de docker: docker-compose == docker compose
+# Iniciar los servicios: docker compose start
+# Detener los servicios: docker compose stop
+# Iniciar los servicios, reconstruir imágenes si hay cambios en Dockerfile, mostrar salida por consola: docker compose up
+# Ver los logs: docker compose logs -f
+# Crear todas las imágenes: docker compose build
+# Levantar varias instancias de algún servicio (ej. sumador): docker compose up --scale sumador=3
+# Remueve contenedores: docker compose rm -f
 version: '3.5'
 services:
     # A cada contenedor se le asigna un hostname
